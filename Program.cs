@@ -16,8 +16,10 @@ if (app.Environment.IsDevelopment()) {
     app.UseSwaggerUI();
 }
 
-var taskService = app.Services.GetRequiredService<TaskService>(); //Added Required as GetService<T>() doesn't guarantee the service exists in the container and causes console warnings
-taskService.Run(); // Call the Run method to execute the task service logic
+var taskService = app.Services.GetRequiredService<TaskService>(); //Added Required as GetService<T>() doesn't guarantee the
+                                                                  //service exists in the container and causes console warnings
+                                                                  //which were messy
+taskService.Run();
 
 
 app.UseHttpsRedirection();
