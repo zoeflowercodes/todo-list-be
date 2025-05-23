@@ -90,7 +90,6 @@ public List<TaskItem> UpdateTask(Guid id, TaskItem updatedTask)
         {
             _logger.LogInformation($"{task}");
         }
-
         UpdateCache();
         return _tasks;
     }
@@ -103,11 +102,22 @@ public List<TaskItem> UpdateTask(Guid id, TaskItem updatedTask)
             _cache.Set(task.Id, task, TimeSpan.FromMinutes(5));
         }
     }
-
 }
 
 // think of how to cache request to db?? Done??
 
-// if one of these methods didnt update the cache, it would affect the GetAllTasks... how do you protect against this?
+// if one of these methods didn't update the cache, it would affect the GetAllTasks... how do you protect against this?
 
 // Type 'TaskItem' is not awaitable
+
+
+// Decorate: updates on to cache, then onto repository, cannot not update cache or miss it
+// cache service, https://learn.microsoft.com/en-us/aspnet/core/fundamentals/configuration/options?view=aspnetcore-9.0 ,
+// https://andrewlock.net/adding-decorated-classes-to-the-asp.net-core-di-container-using-scrutor/ 
+// https://github.com/HillLuke/DesignPatterns/blob/main/DesignPatterns_Console/Structural/Decorator.cs
+// https://refactoring.guru/design-patterns/decorator/csharp/example
+// spin up MongoDb docker
+// auth service
+// auto mapper https://automapper.org/ making dto's 
+// async https://learn.microsoft.com/en-us/dotnet/csharp/asynchronous-programming/
+// return completed/non-completed. lint filtering
