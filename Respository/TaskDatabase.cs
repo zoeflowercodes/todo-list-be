@@ -3,7 +3,7 @@ using Microsoft.Extensions.Caching.Memory;
 public class TaskDatabase
 {
 
-    private readonly List<TaskItem> _tasks;
+    private List<TaskItem> _tasks = new();
     private readonly ILogger<TaskService> _logger;
     private readonly IMemoryCache _cache;
     public TaskDatabase(ILogger<TaskService> logger, IMemoryCache cache)
